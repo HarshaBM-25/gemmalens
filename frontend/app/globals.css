@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0a0b0d;
+  --bg-2: #111318;
+  --bg-3: #181c24;
+  --border: #1e2330;
+  --border-2: #2a3040;
+  --accent: #4ade80;
+  --accent-dim: #22c55e;
+  --accent-glow: rgba(74, 222, 128, 0.15);
+  --text: #e8eaf0;
+  --text-dim: #8892a4;
+  --text-muted: #4a5568;
+  --purple: #a78bfa;
+  --blue: #60a5fa;
+  --orange: #fb923c;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Mono', 'Fira Code', 'Courier New', monospace;
+  margin: 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-2); }
+::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 3px; }
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); }
+  50% { box-shadow: 0 0 20px 4px var(--accent-glow); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.animate-fadeIn { animation: fadeIn 0.4s ease forwards; }
+
+.glow-accent { box-shadow: 0 0 20px var(--accent-glow); }
+
+/* Prose for markdown */
+.prose { max-width: none; color: var(--text); }
+.prose h1, .prose h2, .prose h3 { color: var(--accent); font-weight: 600; margin: 1.2em 0 0.6em; }
+.prose h1 { font-size: 1.4em; }
+.prose h2 { font-size: 1.2em; }
+.prose h3 { font-size: 1.05em; }
+.prose p { color: var(--text-dim); line-height: 1.7; margin: 0.6em 0; }
+.prose ul, .prose ol { color: var(--text-dim); padding-left: 1.4em; }
+.prose li { margin: 0.3em 0; }
+.prose code { background: var(--bg-3); border: 1px solid var(--border); padding: 0.1em 0.4em; border-radius: 3px; font-size: 0.88em; color: var(--accent); }
+.prose pre { background: var(--bg-3); border: 1px solid var(--border); padding: 1em; border-radius: 6px; overflow-x: auto; }
+.prose pre code { background: none; border: none; padding: 0; }
+.prose strong { color: var(--text); }
+.prose blockquote { border-left: 2px solid var(--accent); padding-left: 1em; color: var(--text-muted); }
